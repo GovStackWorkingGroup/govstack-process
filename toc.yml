@@ -1,0 +1,17 @@
+---
+toc:
+  introduction:
+    - overview.md
+    - scope.md
+    - obsoletes.md
+    - references.md
+    - terminology.md
+  chapters:
+    - govstack_namespaces.md
+    - govstack_publications.md
+    - publication_tracks.md
+    - compiling_specifications.md
+    - govstack_working_groups.md
+  resources:
+    - skills.md
+    - scripts.md

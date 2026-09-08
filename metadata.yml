@@ -1,0 +1,11 @@
+---
+name: GovStack Meta-Specification
+description: Documentation about publishing GovStack specifications.
+url: https://specs.govstack.global/meta-specification
+repository: https://github.com/govStackWorkingGroup/meta-specification
+publication_id: govstack:core:meta-specification
+working_group: govstack:team:technical-committee
+versions:
+  - version: 1.0-draft
+    url_suffix: /meta-specification/1.0-draft
+    latest: true
