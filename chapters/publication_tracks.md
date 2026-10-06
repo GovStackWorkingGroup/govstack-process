@@ -1,201 +1,176 @@
 ---
 title: Publication Tracks
-description: This repository lists the documentations that govern GovStack Specification lifecycle, including the operating procedures for the Working Groups that create specifications. It’s objective is to ensure there are clear processes for the different participants and stakeholders using, building and implementing the GovStack framework.
-authors:
-  - name: Ali González-García
-  - name: Nico Lüeck
+description: The stages every GovStack publication moves through, from proposal to release and obsolescence, who approves each step, and how publications are reviewed.
 ---
-# 5. Specifications
 
-Work in progress
+Every GovStack publication moves through the same stages: it is proposed, drafted, reviewed,
+released and, when it is no longer needed, made obsolete. This chapter sets out each stage, who
+approves it, and how a publication is reviewed. The Working Group that owns a publication does the
+work (see `govstack_working_groups.md`). The decisions of the Technical Committee and the Editorial
+Committee are recorded in the GovStack Registry (see *Records* in `govstack_registry.md`).
+
+## Overview
+
+The diagram shows the whole track. A new publication starts with a proposal. A major or minor
+version starts as a draft. A patch version goes straight to its release pull request. Each stage is
+described in the sections that follow.
+
+```mermaid
+flowchart TD
+    start(["A Working Group changes a publication"]) --> kind{"What kind of change?"}
+    kind -->|New publication| p1
+    kind -->|Major or minor version| d1
+    kind -->|Patch version| r1
+
+    subgraph proposal ["Proposal"]
+        p1["WG opens a proposal issue<br/>in govstack-registry"] --> p2["Architecture WG reviews it<br/>(specifications and reference architectures)"]
+        p2 --> p3{"Technical Committee<br/>decides"}
+        p3 -->|Declined| p4["TC adds a proposal record<br/>and closes the issue"]
+        p3 -->|Approved| p5["TC adds a proposal record<br/>and assigns the identifier"]
+        p5 --> p6["WG adds the publication<br/>to its charter"]
+    end
+    p6 --> d1
+
+    subgraph draft ["Draft"]
+        d1["WG drafts version X.Y.Z-draft<br/>compiler checks every pull request"] --> d2{"WG decides the draft<br/>is ready for review"}
+    end
+    d2 -->|Yes| c1
+
+    subgraph candidate ["Release candidate"]
+        c1["WG sets version X.Y.Z-rc<br/>and prepares the review"] --> c2["Review window for the TC, two weeks by default<br/>External review recommended for major versions of specifications"]
+        c2 --> c3["WG integrates the feedback"]
+        c3 --> c4{"WG verdict"}
+    end
+    c4 -->|Not ready| d1
+    c4 -->|Release| r1
+
+    subgraph release ["Release"]
+        r1["WG opens the release pull request<br/>version marked latest: true"] --> r2{"Editorial Committee approves<br/>as owner of metadata.yml"}
+        r2 -->|Changes requested| r1
+        r2 -->|Approved and merged| r3["EC publishes a GitHub Release<br/>with tag vX.Y.Z"]
+        r3 --> r4["Compiler checks, renders the book<br/>and opens a registry pull request"]
+        r4 --> r5["EC merges the release record"]
+        r5 --> r6(["Version released"])
+    end
+
+    subgraph obsoleting ["Obsoleting"]
+        o1["WG or TC writes an ADR<br/>proposing to obsolete the publication"] --> o2{"Technical Committee<br/>decides"}
+        o2 -->|Approved| o3["TC adds an obsoletion record"]
+        o3 --> o4(["Publication obsolete"])
+    end
+    r6 -.->|When it is no longer needed| o1
+```
+
+## Stages
+
+| Stage | In the repository | Starts when | Ends when | Approved by |
+|---|---|---|---|---|
+| Proposal | An issue in `govstack-registry`, opened from the *Publication Proposal* template | The issue is opened | The Technical Committee decides, and records the decision | Technical Committee |
+| Draft | A version with the suffix `-draft` in `metadata.yml`, for example `2.0.0-draft` | The proposal is approved, or work on a minor or patch version starts | The Working Group decides the draft is ready for review | Working Group |
+| Release candidate | A version with the suffix `-rc`, for example `2.0.0-rc` | The Working Group decides the draft is ready for review | The review is complete and the Working Group gives its verdict | Working Group |
+| Released | A version with no suffix, marked `latest: true` | The Working Group opens the release pull request | The Editorial Committee publishes the release and merges its record | Editorial Committee |
+| Obsolete | An obsoletion record in `govstack-registry` | The Working Group or the Technical Committee proposes it | The Technical Committee decides, and records the decision | Technical Committee |
+
+Drafts and release candidates are checked by the compiler but not published, and their requirements
+do not set a baseline (see `compiling_publications.md`).
+
+Not every version goes through every stage:
+
+| Change | Proposal | Draft | Release candidate and review | Release |
+|---|---|---|---|---|
+| New publication | Yes | Yes | Yes | Yes |
+| Major version | No | Yes | Yes | Yes |
+| Minor version | No | Yes | Yes. A review window for the Technical Committee | Yes |
+| Patch version | No | Optional | No review | Yes |
+
+## Proposals
+
+A proposal asks for a new publication.
+
+1. The Working Group opens an issue in `govstack-registry` with the *Publication Proposal* issue
+   template. The same content is in `resources/publication_proposal_template.md`.
+2. For a new specification or a reference architecture, the Architecture Working Group reviews the proposal: that it reflects the state of the art, follows the GovStack Architecture, and does not overlap with other Building Blocks.
+3. The Technical Committee approves or declines the proposal. For a new publication, it assigns the
+   publication's identifier (see *Requesting an identifier* in `govstack_namespaces.md`).
+4. The Technical Committee records its decision as a proposal record in `govstack-registry`, and
+   closes the issue.
+
+The issue's labels show the proposal's status, matching the `status` of the proposal template.
+The labels are defined in `.github/labels.yml` of `govstack-registry`.
+
+| Label | Status | Set by |
+|---|---|---|
+| `proposal` | Every proposal | The issue template |
+| `draft` | `DRAFT`: still being written, not ready for review | The requestors |
+| `under-review` | `UNDER REVIEW`: the Technical Committee is reviewing it | Technical Committee |
+| `approved` | `APPROVED` | Technical Committee, with its proposal record |
+| `declined` | `DECLINED` | Technical Committee, with its proposal record |
 
-What is a specification
+The Working Group adds an approved publication to its charter.
 
-Scope of the GovStack architecture should be referenced here
+## Who does what
 
-## 5.1 Types of specifications 
+| Body | Role in the track |
+|---|---|
+| Working Group | Owns the publication. Proposes, drafts, runs the review, gives the verdict and opens the release pull request. |
+| Technical Committee | Approves proposals for new publications, and assigns identifiers. Has a review window on every release candidate. Approves obsoleting. Records its decisions in the registry. |
+| Editorial Committee | Approves release pull requests, publishes releases, and merges release records into the registry. |
+| Architecture Working Group | Reviews proposals and drafts of specifications against the GovStack Architecture and the other Building Blocks. |
 
-Work in progress
+## Review
 
-Map types of specs to [this chart](https://govstack-global.atlassian.net/wiki/spaces/~615604c2bfa2c1006b775001/embed/1017511950?atl_f=PAGETREE)
+### Which review applies
 
-1. Foundational BB
-2. Feature BB
-3. Guidelines
-4. Cross-Cutting - Other types of requirements
+| Publication | Major version | Minor version | Patch version |
+|---|---|---|---|
+| Specifications: `govstack:spec`, `govstack:spec:*`, `govstack:terminology*` | External review RECOMMENDED, and a review window for the Technical Committee | A review window for the Technical Committee | No review |
+| Informative publications: `govstack:ra:*`, `govstack:guide:*` | A review window for the Technical Committee | A review window for the Technical Committee | No review |
+| The GovStack Process: `govstack:process` | Review by the Technical Committee | Review by the Technical Committee | No review |
 
-## 5.2 Lifecycle of a specification and its processes
+Every review is open to the Technical Committee. Informative publications need no external review.
 
-Ready for Feedback
+A review window lasts two weeks by default. The Working Group can set a different length when it
+prepares the review.
 
-Specifications are meant to be proposed, drafted, reviewed, released, implemented, improved-on through feedback, and whenever needed, obsoleted. The GovStack community and its governance provides the environment to all of these stages.
+### Review phases
 
-The Specification Lifecycle and the teams involved in each stage
+The Working Group runs the review:
 
-**Working Groups** are the places where most of this happens.
+1. **Preparation.** Review the text a final time. Update `RELEASE_NOTES.md` for a major version, or
+   `CHANGELOG.md` for a minor or patch version. For an external review, shortlist reviewers, prepare
+   a review form with instructions, and set the deadline and the minimum number of reviews.
+2. **Announcement.** Send a short announcement to the Technical Committee, which opens its review
+   window and distributes the announcement on GovStack's public channels.
+3. **Review period.** Collect the reviews and share them with the members.
+4. **Integration.** Decide how to handle each piece of feedback: integrate small changes into this
+   version, and plan larger ones for a later version.
+5. **Verdict.** Decide, in a plenary session, whether the release candidate becomes a release.
 
-The following are processes and procedures available to Working Groups that work on specification building: 
+### Minimum requirements
 
-[**Specifications Track Process**](https://govstack-global.atlassian.net/wiki/spaces/GH/pages/1036124166/GovStack+Meta+Specification#5.3-Specifications-Track-Process)**:** The process that describes the high-level procedure to move specifications from Proposal, Draft, Review, Publish and Obsoleting. It clarifies who performs, who facilitates and who reviews and who approves each part of the process. 
+1. The decisions to move to a release candidate, to integrate feedback and on the verdict follow
+   the Working Group's decision making: consensus first, voting where consensus is not reached (see
+   *Decision making* in `govstack_working_groups.md`).
+2. An external review SHOULD be open to the public. It has at least two reviewers, and no reviewer
+   is listed in the publication's `authors.yml` or belongs to an organization of an active member
+   of the Working Group.
 
-[**Specification Review Process**](https://govstack-global.atlassian.net/wiki/spaces/GH/pages/1036124166/GovStack+Meta+Specification#5.4-Specification-Review-Process)**:** The procedures that helps Working Groups coordinate the review process of a specification.
+## Release
 
-## **5.3 Specifications Track Process**
+A Working Group member opens the release pull request, and the Editorial Committee approves it and
+publishes the release. The compiler then renders the book and opens a pull request to
+`govstack-registry` with the release record, which the Editorial Committee merges. The steps are
+in *Releasing a version* in `compiling_publications.md`.
 
-Ready for Feedback
+## Obsoleting
 
-### 5.3.1 Specifications Track
+A publication becomes obsolete when it is no longer maintained or has been replaced.
 
-A specification, no matter if its a **new specification** or a **new major version**, goes through the following stages for publication:
+1. The Working Group, or the Technical Committee when the Working Group is dissolved, writes an ADR
+   in the `ADR/` folder of the publication's repository. The ADR gives the reasons and names the
+   publication that replaces it, if any.
+2. The Technical Committee approves or declines the ADR.
+3. If it approves, the Technical Committee adds an obsoletion record to `govstack-registry`.
 
-1. Specification Proposal
-2. Specification Draft
-3. Specification Release Candidate
-4. Published Specification
-5. Obsoleted specification
-
-**Minor versions** can skip the Specification Proposal Phase and undergo an internal review process by the Working group.
-
-### 5.3.2 Tools for crafting specifications
-
-Ready for feedback
-
-The following are tools a working group should have access to, through its facilitators, and the usage expected out of these tools. Access can be requested to the Technical Facilitation Team:
-
-| **Tool** | **URL** | **Affordances** |
-| --- | --- | --- |
-| Gitbook | <https://govstack.gitbook.io/> | Publish minor or major versions of specifications |
-| Github | <https://github.com/GovStackWorkingGroup/> | Debug changes to minor or major versions of specifications |
-| Jira | <https://govstack-global.atlassian.net/jira/> | Determine and assign tasks needed for projects the Working Group undergoes, specially when drafting specifications. |
-| Confluence | <https://govstack-global.atlassian.net/wiki/> | Have a repository for both the specification draft and working group activity. Specially minute-taking for weekly sessions and documentation of important decisions. |
-| Slack | <https://govstack.slack.com/> | Short form communication with the Working Group. |
-| Swagger |  | Specification API development and testing. |
-| Figma |  | Specification whiteboard and design development. |
-
-### 5.3.3 Roles
-
-Ready for feedback
-
-In a nutshell:
-
-| **Team** | **Action** |
-| --- | --- |
-| Working Group | Own (organize, coordinate, craft, draft, deliberate) |
-| Technical Committee Facilitation Team | Facilitate, support |
-| Architecture Working Group | Review, feedback, oversee |
-| Governance Committee | Approve |
-
-In detail:
-
-#### Governance Committee:
-
-1. Approves the proposal for the creation of new specifications
-2. Approves a proposal for major version of a specification
-3. Gets notified of the creation of a minor version
-4. Gets notified of the undergoing of the Release Candidacy or the Publishing for a specification
-5. Approves the obsoleting of a specification
-
-#### Technical Facilitation Team
-
-1. Ensures **proposals** for new specifications or major version of specifications are complete, sound and properly estimated, and pass a Product and Technical soundness review.
-2. Is responsible for green-lighting moving any specifications from one step to the next on the **Specifications Track Process** by ensuring readiness of the process.
-3. Coordinates the **Release Process**, including the different aspects of the review and publishing process.
-4. Provides facilitation support to **Working Groups** and any support regarding tooling, technical writing and review, as well as networking needed to advance either specifications being built or activities supported on the Working Group’s **Charter**.
-5. Identifies any needs for human or material resources for both specification work and working group charter activities and works to present budget proposals to the **Governance Committee**.
-
-#### Architecture Working Group
-
-1. Reviews that proposals for new specifications or major version of specifications reflect the state of the art for that technology, that the proposal reflects the principles outlined in the [**Architecture and Nonfunctional Requirements**](https://govstack.gitbook.io/specification/architecture-and-nonfunctional-requirements) of the GovStack Initiative, and that it is harmonious and not overlapping with the rest of the Building Blocks ecosystem.
-2. Ensures proposals for new specifications or major version of specifications are **reviewed** and **green lighted** with the **Product Committee** and teams and groups related to it. This is called **Product Soundness Review**.
-3. Ensures **proposals and drafts** for new specifications or major version of specifications pass a **Architectural Soundness Review,** by identifying the different groups and stakeholders that could provide feedback and clarify that the scope of the document makes technical sense, and ensuring it aligns to the rest of the GovSpecs ecosystem.
-4. Presents proposals for new specifications or major version of specifications, as well as obsoleting of specification requests to the Governance Committee for approval. In the case of minor versions, it notifies the **Governance Committee**.
-
-#### Working Groups
-
-Through its **Facilitators** are responsible for the following activities
-
-- Craft a **Specification Proposal**
-- Update Working Group’s **Charter** with the Specification Proposal outlines and estimated timelines
-- Coordinate Working Group Meetings where specification drafting activities are defined and deliberated, documenting meeting minutes in the Working Group’s Confluence space
-- Own the **Specification Drafting Process**, and coordinate all work to be done through the Working Group’s Jira Space, as well as use the Working Group’s Confluence space for the Draft
-- Decide, via deliberation, when a Specification is ready to be moved to a **Release Candidate** stage
-- Request any help or resources needed from the Technical Committee Facilitation Team to complete the specification
-
-Through its **representatives**, are responsible for the following:
-
-- Present the Specification Proposal Document to the Technical Committee Facilitation Team and to the Architecture Working Group
-- Attend Architecture Working Group Meetings to identify harmonious interaction with other building blocks
-- Report progress of the Specification Drafting stage to the Technical Committee Facilitation Team
-
-Through its **members**, are responsible for the following:
-
-- Attend Working Group meetings where issues are deliberated and tasks are assigned
-- Grab tasks from Jira to be worked-on for the drafting of the specification, and work on the Working Group’s Confluence space during the specification drafting stage
-
-### 5.3.4 Moving through the stages of each part of the process
-
-Ready for feedback
-
-| **Stage** | **Definition of Ready**(Done by the Working Group) | **Definition of Done** |
-| --- | --- | --- |
-| 1. Specification Proposal | - The WG has filled the <https://govstack-global.atlassian.net/wiki/spaces/GH/pages/1129381902/Specification+Proposal+Template?atlOrigin=eyJpIjoiZjJjZjU3MzdkY2UzNDg4N2JiMDYxMDUwOGZiZTZmMDQiLCJwIjoiYyJ9> and made it available on their Confluence Space | - A Product Soundness Review has been passed - A Architectural Soundness Review has been passed - The Governance Committee has approved the Proposal |
-| 1. Specification Draft | - A starting document with an outline has been created on the Confluence Space | - A Release Candidate request has been approved by the Working Group |
-| 1. Release Candidate | - A Changelog or Release notes has been issued - An announcement has been prepared - Review channels and review dynamics are defined | - The review process has been completed - The Working Group has approved the verdict |
-| 1. Published Specification | - The Release Candidate phase has been completed | - The new version has been posted to the Gitbook - Release announcement has been posted in public channels |
-| 1. Obsoleted Specification | - An Architecture Decision Record has been filled | - The ADR proposal was approved by the Architecture Committee - The Governance Committee has approved the obsoleting request |
-
-## 5.4 **Specification Review Process**
-
-### 5.4.1 The stages and tasks of the Review Process
-
-Ready for feedback
-
-The Working Group owns the Review process, and aids itself with the help of the Technical Facilitation Team and the Architecture Working Group to perform it. The review has the following stages:
-
-| **Phase** | **Tasks** |
-| --- | --- |
-| 1. Preparation | - Perform a final review of the text - Compile Release Notes for a Major Version or append a Change Log to the Release Notes for a minor version - Craft a shortlist of people or organizations to invite as reviewers - Prepare a review form, with instructions for reviewers, and determine a review deadline and minimum threshold of reviews to be achieved - Determine general directives for the integration of feedback after reviews have been received, and for deciding on how will the group veredict for moving the release candidate into publication |
-| 1. Announcement | - Craft a short public announcement to be delivered to the Technical Facilitation Team for distribution in GovStack’s public channels |
-| 1. Review Period | - Monitor any incoming reviews and share them with the working group members |
-| 1. Integration | - Decide as a Working Group how to integrate any feedback received:     - For small changes, integrate to the current version     - For changes requiring further development, the group may decide to add the feedback to the planning for the next minor or major version |
-| 1. Veredicting | - Decide on a plenary session with the Working Group members after reviewing feedback received whether the Release Candidate shall move into an official Release |
-| 1. Publishing | - Announce the official release with the help of the Technical Facilitation team through GovStack’s public channels |
-
-### 5.4.2 Quality Guidelines for the Release Process
-
-To be drafted.
-
-- Sections
-- Versioning
-- Declaring dependency to other BB and their versions 
-- Change management
-- Road-mapping
-- Styles manual
-- Referencing external specifications
-
-### 5.4.3 Minimum Requirements for the Review Process
-
-Ready for feedback
-
-Each Working Group has autonomy in defining when to move a specification into a Release Candidacy, receive and integrate reviews and veredict for publishing. However, the following requirements *MUST* be observed:
-
-1. The decision for moving a specification to a release candidacy, as well as the integration of feedback and veredicting of the Release Process MUST adhere to be decided using [Consensus first](https://govstack-global.atlassian.net/wiki/spaces/GH/pages/1036124166/GovStack+Meta+Specification#4.6-Consensus-building-in-Working-Groups), and resort to voting mechanisms where the need for agility in decision-making is required.
-2. Release Notes should accompany every major version for a specification. Minor versions should be appended on a Changelog section of the release notes.
-3. Reviews SHOULD be open to the public. However, the minimum threshold for reviewers should be no smaller than 2, and MUST NOT include neither members appearing in the credits section of the specification, or people belonging to the organization of the list of active members of the working group. For more detail, review the section for [Determining Working Group Membership](https://govstack-global.atlassian.net/wiki/spaces/GH/pages/1036124166/GovStack+Meta+Specification#4.5.4-Becoming-a-member-and-membership-finalization).    
-
-## 5.5 Using and improving specifications
-
-Ready for feedback
-
-After a specification has been officially released, it becomes important to promote and document its implementation. GovStack has several channels from which specification usage is promoted, tracked, tested and expanded. The following is a list of GovStack programmes and ways in which Working Groups have the right to interact:
-
-| **Programme** | **Affordances** |
-| --- | --- |
-| The Country Engagement Team | - Implement a specification in a country - Get a review from an implementer country -  Test or get feedback from an implementer country - Invite countries to participate in the Working Group as members |
-| [GovMarket](https://www.govstack.global/our-offerings/govmarket/) | - Identify software solutions that can become compliant and can participate in testing the specifications |
-| [GovTest](https://www.govstack.global/our-offerings/govtest/) | - Implement the specification in GovStack’s test environment |
-| [GovLearn](https://www.govstack.global/our-offerings/govlearn/) | - Develop content to teach how to use the specification |
-
-## 5.6 Obsoleting a specification
-
-At times a specification may become obsolete. It pertains the Working Group, the Technical Committee and, if needed, the advisory of other GovStack governance committees, to determine when a specification needs to be obsoleted. It is however through the triggering of the Obsoleting process by the **Working Group** and the review of the **Technical Facilitation Committee** that such process, described in section 5.3, happens.
+An obsolete publication stays published at its URLs, and the registry shows it as obsolete. The
+compiler does not release new versions of it. Its identifier is never reassigned.

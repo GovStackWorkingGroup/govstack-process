@@ -4,7 +4,8 @@ title: Scope
 This document applies to all GovStack formal publications:
 - GovStack Core publications
 - Building Block Specifications
-- Implementation Guides, including PAERA, the Implementation Playbook and Service Design Patterns guide
+- Reference Architectures: PAERA, the GovStack Architecture and Domain Reference Architectures
+- Guides, including the Implementation Playbook and the Service Design Patterns guide
 
 It also applies to the following Working Group processes:
 - Creation, organization and closing a Working Group

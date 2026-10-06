@@ -1,0 +1,191 @@
+# Terminology of the GovStack Process.
+#
+# Entry fields:
+#   term:        preferred term
+#   abbreviation: optional
+#   definition:  the definition as used in GovStack
+#   origin:      adopted  - definition quoted unchanged from the source
+#                adapted  - definition based on the source, modified; the note says how
+#                govstack - definition written by GovStack
+#   source:      citation of the source, with clause or section
+#   notes:       optional notes to entry
+#   related:     optional list of related terms in this file
+
+terms:
+
+  - term: reference model
+    definition: >-
+      abstract framework for understanding significant relationships among the entities of some
+      environment, and for the development of consistent standards or specifications supporting
+      that environment
+    origin: adopted
+    source: >-
+      OASIS, Reference Model for Service Oriented Architecture 1.0, OASIS Standard,
+      12 October 2006, 1.1. https://docs.oasis-open.org/soa-rm/v1.0/soa-rm.html
+    notes:
+      - >-
+        A reference model "consists of a minimal set of unifying concepts, axioms and
+        relationships within a particular problem domain, and is independent of specific
+        standards, technologies, implementations, or other concrete details" (same source, 1.1).
+      - >-
+        In GovStack, the domain reference model is Part 1 of a Domain Reference Architecture.
+        It is not a separate publication.
+    related: [reference architecture, domain reference architecture]
+
+  - term: reference architecture
+    definition: >-
+      reference model mapped onto the elements that realize it and the relationships between them
+    origin: adapted
+    source: >-
+      Bass, Clements, Kazman, Software Architecture in Practice, 2nd edition, Addison-Wesley,
+      2003, 2.3.
+    notes:
+      - >-
+        Bass et al. give "a reference model mapped onto software elements (that cooperatively
+        implement the functionality defined in the reference model) and the data flows between
+        them". GovStack makes two changes. It drops "software", because PAERA maps its reference
+        model onto organizational, legal and semantic arrangements. It writes "relationships" for
+        "data flows", because those arrangements are not connected by data flows.
+      - >-
+        Bass et al. define a reference model more narrowly than GovStack does, as "a division of
+        functionality together with data flow between the pieces" (same source, 2.3). GovStack
+        uses the OASIS definition of reference model, which includes such a decomposition. In a
+        Domain Reference Architecture, the capability map and the capability interactions are the
+        reference model in the sense of Bass et al.
+      - >-
+        Bass et al. note that the mapping from reference model to elements need not be one to
+        one (same source, 2.3). A capability can be realized by Key Functionalities of more than one
+        Building Block.
+      - >-
+        GovStack has three kinds of reference architecture: PAERA, the GovStack Architecture and
+        Domain Reference Architectures. They differ in the environment they model and the elements
+        they map it onto (GovStack Process, chapter Reference Architectures).
+      - >-
+        ISO/IEC/IEEE 24765:2017, 3.1266 gives "generic, organizational structure or design for
+        software systems in a domain". ISO/IEC 26552:2019, 3.9 gives a definition in product line
+        terms. GovStack uses neither because both are limited to software.
+      - >-
+        GovStack reference architectures are informative and carry no requirements. They are
+        publications in the govstack:ra: class.
+    related: [reference model, domain reference architecture, architecture description]
+
+  - term: domain reference architecture
+    definition: >-
+      reference architecture that explains the significant relationships among the actors,
+      services, capabilities and information of one domain, and maps those capabilities onto the
+      roles performed by Building Block specifications
+    origin: govstack
+    source: GovStack Process, chapter Reference Architectures.
+    notes:
+      - >-
+        A Domain Reference Architecture extends the GovStack Architecture and references Building
+        Block specifications, assigning them roles.
+      - EXAMPLE Health, social protection, agriculture.
+      - A Domain Reference Architecture holds across countries.
+      - A Working Group owns each Domain Reference Architecture.
+    related: [reference architecture, reference model, role]
+
+  - term: role
+    definition: >-
+      function that a Building Block, or a component not yet specified, performs within a domain,
+      as described in a Domain Reference Architecture
+    origin: govstack
+    source: GovStack Process, chapter GovStack Publications, Role graduation.
+    notes:
+      - EXAMPLE Credential issuer, credential verifier, payment initiator, patient registry.
+      - >-
+        A role that needs conformance assessment becomes a Building Block specification of its
+        own (role graduation).
+    related: [domain reference architecture, capability]
+
+  - term: capability
+    definition: >-
+      function that a domain needs in order to deliver its services, described independently of
+      the components that implement it
+    origin: govstack
+    source: GovStack Process, chapter Reference Architectures, Part 1.4.
+    notes:
+      - >-
+        Capabilities belong to the domain reference model. The capability mapping in a Domain
+        Reference Architecture assigns each capability to a role.
+      - >-
+        A capability belongs to a domain. A Key Functionality belongs to a Building Block (GovStack
+        Architecture, Common Terminology). A capability can be realized by Key Functionalities of
+        one or more Building Blocks.
+    related: [reference model, role, Key Functionality]
+
+  - term: architecture
+    definition: >-
+      fundamental concepts or properties of an entity in its environment and governing principles
+      for the realization and evolution of this entity and its related life cycle processes
+    origin: adopted
+    source: ISO/IEC/IEEE 42010:2022, 3.2.
+    related: [architecture description, entity of interest]
+
+  - term: architecture description
+    abbreviation: AD
+    definition: work product used to express an architecture
+    origin: adopted
+    source: ISO/IEC/IEEE 42010:2022, 3.3.
+    notes:
+      - Every GovStack reference architecture is an architecture description.
+    related: [architecture, architecture view]
+
+  - term: architecture description framework
+    abbreviation: ADF
+    definition: >-
+      conventions, principles and practices for the description of architectures established
+      within a specific domain of application or community of stakeholders
+    origin: adopted
+    source: ISO/IEC/IEEE 42010:2022, 3.5.
+    notes:
+      - >-
+        The rules that GovStack sets for the structure of reference architectures form an
+        architecture description framework. They are intended for the Specification Framework.
+    related: [architecture description, architecture viewpoint]
+
+  - term: architecture view
+    definition: information part comprising portion of an architecture description
+    origin: adopted
+    source: ISO/IEC/IEEE 42010:2022, 3.7.
+    related: [architecture viewpoint, architecture description]
+
+  - term: architecture viewpoint
+    definition: >-
+      set of conventions for the creation, interpretation and use of an architecture view to frame
+      one or more concerns
+    origin: adopted
+    source: ISO/IEC/IEEE 42010:2022, 3.8.
+    related: [architecture view, concern]
+
+  - term: concern
+    definition: matter of relevance or importance to a stakeholder
+    origin: adopted
+    source: ISO/IEC/IEEE 42010:2022, 3.10.
+    related: [stakeholder, architecture viewpoint]
+
+  - term: correspondence
+    definition: >-
+      identified or named relationship between two or more architecture description elements
+    origin: adopted
+    source: ISO/IEC/IEEE 42010:2022, 3.11.
+    notes:
+      - >-
+        The capability mapping of a Domain Reference Architecture is a correspondence between its
+        reference model and its reference architecture.
+    related: [architecture description]
+
+  - term: entity of interest
+    abbreviation: EoI
+    definition: subject of an architecture description
+    origin: adopted
+    source: ISO/IEC/IEEE 42010:2022, 3.12.
+    related: [architecture description]
+
+  - term: stakeholder
+    definition: >-
+      role, position, individual, organization, or classes thereof, having an interest, right,
+      share, or claim, in an entity of interest
+    origin: adopted
+    source: ISO/IEC/IEEE 42010:2022, 3.17.
+    related: [concern, entity of interest]

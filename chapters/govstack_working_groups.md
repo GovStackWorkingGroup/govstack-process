@@ -1,161 +1,187 @@
 ---
 title: Working Groups
-description: GovStack Working Groups are groups of experts and practitioners in a particular domain of expertise related to governmental interoperability who convene in advancing GovStack specifications and publications. This document describes the functioning and governance of such working groups.
-authors:
-  - name: Ali González-García
+description: GovStack Working Groups are groups of experts and practitioners in a particular domain of expertise related to governmental interoperability who convene in advancing GovStack publications. This document describes the functioning and governance of such working groups.
 ---
 
-# 4. Working Groups
+## What a Working Group is
 
-## 4.1 What is a Working Group?
+A Working Group is a community of experts with an interest in governmental interoperability. Its
+members convene around one area of expertise to apply the GovStack model to it. Each Working Group
+has an identifier, `govstack:wg:<id>`, and a record in the GovStack Registry (see
+`govstack_namespaces.md` and `govstack_registry.md`).
 
+A Working Group provides an **ongoing space** for its stakeholders to:
 
-A Working Group (WG) is an community through which experts on an area of expertise and with an interest on governmental interoperability, convene around how to implement the GovStack model on such topic. 
+1. Create and maintain GovStack publications about their area: specifications, reference
+   architectures, guides or terminologies. The Working Group is the `owner_group` in the
+   `metadata.yml` of each publication it owns.
+2. Share real-world experience and feedback on implementing existing publications.
+3. Propose minor and major changes to the publications it owns.
+4. Promote the use of its publications and their real-life use cases, and carry out any outreach
+   about its work.
+5. Identify software solutions that could implement its specifications. How solutions are assessed
+   for compliance is set in the [Specification Framework](https://specs.govstack.global/specification-framework/).
 
-## 4.2 Scope
+A publication can also be owned by a GovStack team, such as the Technical Committee, instead of a
+Working Group.
 
+Working Groups are ongoing, but they operate under **annual charters** that must be renewed. A
+Working Group is expected to remain active, with the same goals and facilitators, for the running
+year.
 
-A Working Group provides an **ongoing space** for topic stakeholders to:
+## Roles
 
-1. Create specifications regarding their area of expertise 
-2. Share real-world experiences and feedback regarding the implementation of existing specifications
-3. Advance minor and major changes to existing specifications
-4. Promote publicly the usage of the specifications under the trust of their working group, the promotion of real-life use cases of the specifications, and any outreach activities regarding their work  
-5. Identify potential software solutions that could comply with the specifications and assess the compliance of said solutions
+TODO: Outline the roles of a Working Group. The role that represents a Working Group is called
+"Representative" in this section, "Working Group Lead" in *The charter* and *Creation*, and
+"Point of Contact" in this section and *The charter*. The name is put to the Technical Committee in PROC-ADR-1. Once decided, use one name
+throughout this chapter.
 
-Even though Working Groups are on-going, they operate under the logic of **annual charters** that must be renewed, so **a Working Group is expected to remain active and under the same goals and facilitator teams for the running year**. 
+A Working Group has the following roles:
 
-## 4.3 Composition
+- **Members.** Anyone who joins the Working Group, casually or more permanently. Members contribute
+  their expertise or feedback, attend the Working Group's events, and take part in its asynchronous
+  activities and discussions. Members who contribute to a version of a publication are credited in
+  its `authors.yml`, with their roles and their `govstack:person:` identifier (see *Person
+  identifiers* in `govstack_namespaces.md`).
+- **Representatives.** One or two people per Working Group who agree to represent the Working
+  Group's interests within the wider GovStack governance. Representatives are the main Points of
+  Contact for a Working Group. They:
+    - coordinate and report progress on the annual goals of the charter;
+    - represent their group in the Architecture Working Group, especially for Foundational Building
+      Blocks, to decide and be consulted on cross-functional requirements;
+    - coordinate the work on a new publication, or on a new major or minor version of an existing
+      one, and report its progress to the Technical Committee. When a version is ready, they open
+      its release pull request (see *Working on publications*);
+    - coordinate the work for any request to obsolete a publication.
+- **Facilitators.** The team that organizes the Working Group's activities. A group of facilitators
+  means the Representatives do not carry all the work of running the group, and gives members who
+  want to get more involved a way to do so.
 
-A Working Group is composed by the following roles:
+TODO: Complete the facilitators' commitment. The previous text read "A WG Facilitator is expected
+to remain active within the working group for the period" and was cut off.
 
-- **Members: **Anyone that joins the Working Group either in a casual or more permanent fashion. Members can contribute with either their expertise, feedback, or presence through attending the Working Group events, or participating in any asynchronous activities or discussions in the Working Groups participation channels.
-- **Representative**: One or two people per working group who agree to the responsibility of representing the Working Group interests within the wider GovStack governance. **Representatives will be the main Points of Contact for a Working Group **and their responsibilities as follow: 
-    - Coordinate and report progress on the annual goals of a charter. 
-    - Represent their group in the Architecture Working Group (especially if they belong to Foundational Building Blocks) to decide and be consulted on cross-functional requirements. 
-    - Coordinate the activities for the creation of a new specification, or the proposal and facilitation of a new version, major or minor, of an existing specification and report its progress to the Technical Facilitation Team, as detailed in section <https://govstack-global.atlassian.net/wiki/spaces/GH/pages/1036124166/GovStack+Meta+Specification#5.3-The-Specification-Track-Process> of this document
-    - Coordinate the work needed for any request to obsolete an existing specification.
-- **Facilitators**: The team tasked with the responsibility of organizing all of the Working Group activities. Having a group of facilitators allows for the WG representative to not shoulder all of the responsibilities and workload of organizing a working group, and offers an outlet space for members that want to get involved further in their WG operations. A WG Facilitator is expected to remain active within the working group for the period
+The facilitators are responsible for:
 
-## 4.4 Minimum tools and responsibilities
+- **The charter.** Drafting it with the members, keeping it up to date and publicly available, and
+  documenting and communicating any change (see *The charter*).
+- **The calendar.** Recording every activity of the Working Group in its calendar, so that members
+  can subscribe to it and GovStack can announce the group's activities. The link to the calendar is
+  the `calendar` field of the Working Group's record in the registry.
 
-The following are responsibilities and tools available to the WG facilitation team:
+  TODO: Outline how a Working Group requests a calendar, who creates it, how its link is added to
+  the Working Group's registry record, and how the facilitators maintain it.
 
-- The creation of the Annual Charter: A WG will work together along with its members to propose a document that specifies the goals and scope of the working group for the year. This SHOULD include any activities they may consider. A Charter may be updated in the middle of the running year to include new objectives or update or delete existing ones according to their needs, however the document will need to be up-to-date, changes should be documented and communicated and the document should be available publicly.
-- The maintenance and upkeep of the Working Group community calendar: A calendar will be provided where all activities for the Working Group are to be recorded. The calendar will help the Working Group and the GovStack technical facilitation team to communicate the activities of the Group for outreach. It will also become the common place where all members of the community can subscribe so that they can always be informed about the activities of their group.
-- The documentation of the Working Group activities on their confluence webpage and the up-to-date keeping of the WG public page
-- Access, administration and up-keeping of the Working Group’s communal spaces and channels: The working group facilitators will have access to several spaces that serve as the WG’s infrastructure to perform its activities. The minimum set of tools and their maintenance is as follows:
-    - Slack Channel
-    - Confluence webpage
-    - Public Webpage
-    - A member mailing list
-- Some other tools are available upon request, but not limited to:
-    - An online meeting platform
-    - Access to the Sandbox to test the compliance of new or existing solutions
-    - Access to GovStack’s swagger to create and document OpenAPI specifications
-- When in the process to write a new specification or advance an existing one to another version:
-    - Access to the Gitbook
-    - Access to Jira ticketing system
-    - Access to GovStack’s GitHub
-- Help and assistance: As part of the GovStack wider community, a Working Group has the right to request different types of assistance to fulfill their goals. Including but not limited to:
-    - The assistance of the technical facilitation team to review any work they have, answer any questions or escalate any matter to other GovStack teams through either the TC Facilitation team office hours or directly.
-    - Assistance on the promotion of the WG activities and milestones through the use of GovStack’s communication channels and its relation to global and regional DPG and DPI networks.
-    - Technical mentors: People outside their area of expertise that may provide support hours to solve a delimited problem. WG facilitators may request this assistance through the Technical Facilitation team.
-    - Support from the GovStack institution to apply to any funding or to raise or receive donations to complete specific projects that advance the WG goals.  
-- Budgeting (Experimental): The Working Group will have access to budget to complete their activities and to use it as they see fit. To request a budget the following needs to be made:
-    - Project scope: All budget request should be related to activities denoted on the Annual Charter
-    - Budget allocation: A detail of where the budget wants to be allocated. Examples include: Hours to hire a Lead, money to complete a compliance evaluation, event organizing expenses, etc.
-    - A minute signed by members of the WG where a session was held and decisions where made about the budget request.
+- **Documentation.** Keeping a record of the Working Group's activities and decisions, and keeping
+  its public page up to date.
 
-### 4.4.1 Spaces available to Working Groups
+  TODO: Rework how a Working Group documents its activities and decisions. Decisions about a
+  publication can be recorded as ADRs in the `ADR/` folder of its repository. Decide what is
+  recorded as an ADR, what as a meeting minute, and where minutes are kept.
 
-The following are designated spaces to which Working Group members have access
+- **The group's spaces.** GovStack gives each Working Group a public page, a calendar, a
+  communication channel and GitHub repositories for its publications. The facilitators look after
+  them. The spaces, and the help a Working Group can ask for, are listed in the *Working Group
+  Handbook*.
 
-- [Slack](http://govstack.slack.com), for immediate communication
-- [Confluence](https://govstack-global.atlassian.net/wiki/), for working documents
-- [Jira](https://govstack-global.atlassian.net/jira/), for the tracking of tasks
-- [GitBook](https://govstack.gitbook.io), for publishing and change management of specifications 
+TODO: Outline membership: who is a participant, the [Code of Conduct](https://www.govstack.global/coc/)
+and the Contributor Code, participating as an individual or on behalf of an organization, and how a
+member becomes a Representative or a facilitator, including election and resignation.
 
-## 4.5 Working Group Creation and the creation of the Annual Charter
+## The charter
 
+A charter is the document that sets out a Working Group's goals and scope for the year. It is
+written from the charter template in the *Working Group Handbook*, and kept in the `charters/`
+folder of `govstack-registry` as `<wg-id>-<year>.md`. A Working Group Charter MUST contain:
 
-### 4.5.1 Creation of a Working Group
+- the group's mission;
+- the scope of the group's work;
+- the facilitators who will run the group, their expected time commitment and their level of
+  involvement, for example tracking developments, writing and editing, developing code or
+  organizing pilots;
+- the expected milestones;
+- the meeting mechanisms and their expected frequency;
+- the communication mechanisms used within the group, with the rest of the GovStack community and
+  with the public;
+- an estimate of the time commitment expected from participants;
+- one or two Working Group Leads, who remain the Points of Contact for the Working Group.
 
-The creation of a Working Group starts with the creation of a Charter, which is a document that outlines the Working Group scope, objectives, facilitators, meeting frequencies, communication channels and other relevant information.
+If the Working Group plans to create publications or new versions during the year, the charter MUST
+also contain, for each one:
 
-The charter is to be renewed **annually**, which allows the Working Group to set annual goals and distribute their time commitments accordingly.
+- a description of the work;
+- the motivation for it;
+- the expected milestones;
+- the responsible Point of Contact;
+- the members committed to the work.
 
-A charter and its objectives MAY be changed upon documented agreement via a meeting minute.
+A charter MAY be changed during the year. The change is agreed in a meeting and documented in its
+minutes, and the updated charter is published.
 
-Once the charter is written and agreed to, the Working Group facilitators, via the Working Group Leads, SHOULD submit the Charter to the Technical Facilitation Team for creation and approval.
+## Lifecycle
 
-### 4.5.2 Creation and renewal of a Charter
+### Creation
 
+A Working Group is created when its charter is approved:
 
-A Working Group Charter MUST contain all of the following information:
+1. The future facilitators write the charter, openly, so that participants can contribute to it.
+2. The Working Group Leads submit the charter to the Technical Committee as a pull request that
+   adds it to the `charters/` folder of `govstack-registry`.
+3. The Technical Committee announces the request for comments on GovStack's public communication
+   channels. The GovStack community comments on the pull request for at least two weeks.
+4. The Technical Committee and the facilitators resolve every comment within two weeks of the end
+   of the comment period. The Technical Committee then publishes its decision to create the Working
+   Group or not, and merges the pull request if it does.
+5. If the Working Group is created, the Technical Committee assigns its identifier,
+   `govstack:wg:<id>`, and adds its record to `working_groups.yml` in `govstack-registry` by pull
+   request, with the fields `id`, `name`, `url`, `calendar`, `charter` and `status: active`.
+   `charter` is the path of the approved charter.
 
-- The group’s mission
-- The scope of the group’s work
-- A list of Facilitators that will be running the group and their expected time commitment and level of involvement by the Team (e.g., to track developments, write and edit technical reports, develop code, or organize pilot experiments). 
-- Expected milestones
-- Meeting mechanisms and expected frequency
-- Communication mechanisms to be employed within the group, between the group and the rest of the GovStack community and with the general public
--  An estimate of the expected time commitment from participants.
-- The designation of 1 or 2 Working Group Leads that will remain as the Points of Contact for the Working Group.
+A charter's status follows these steps. It is `DRAFT` while it is written (step 1), `UNDER REVIEW`
+from its submission until the decision (steps 2 to 4), and `APPROVED` once the Technical Committee
+merges it. The status of a charter is not the status of the Working Group: a Working Group is
+`active` or `inactive` in the registry.
 
-If the Working Group wants to advance existing specifications or create new ones during the year, the following information MUST be included:
+### Annual renewal
 
-- Description of the advancement to specifications to be achieved
-- Motivations to advance the needed specifications
-- Expected milestones to be achieved
-- Responsible Point of Contact
-- A list of members that committed to work on the specification
+The charter is renewed every year, so that the Working Group can set its goals for the year and
+plan its members' time. A renewed charter is a new file in `charters/`, and follows steps 1 to 4 of
+*Creation*. Once it is approved, the Technical Committee updates the `charter` field of the Working
+Group's record to the new file. Past charters stay in `charters/`. The Working Group keeps its
+identifier and its registry record.
 
-In the case of existing Working Groups, a Charter document SHOULD be built in an open way, so that participants are able to contribute to the document.
+### Dissolution
 
-Once submitted, a Charter document MUST be published by the Technical Facilitation team on {Resource} to remain open to the GovStack community for comments for at least 2 weeks. 
+The Technical Committee dissolves a Working Group in any of these cases:
 
-The Technical Facilitation team SHALL use GovStack’s public communication channels to announce a request for comments to the Charter.
+- **The members decide to dissolve it.** The decision is taken in a meeting announced at least two
+  weeks before through the Working Group's communication channels, and documented in its minutes.
+- **The Technical Committee decides to dissolve it.** The Technical Committee decides in a public
+  meeting and publishes its reasons in the minutes.
+- **The Working Group is inactive** for six months after its last charter expired. Before
+  dissolving it, the Technical Committee MUST consider whether an open call can reactivate it, and
+  MUST document the dissolution.
 
-Once comments are receive, both the Technical Facilitation Team and the Working Group Facilitation team have between a day and up to 2 weeks to resolve all comments and publish a resolution to launch or decline the creation of the working group.  
+When a Working Group is dissolved, the Technical Committee changes the `status` of its registry
+record to `inactive`. The record is never deleted, and the identifier is never given to another
+group. The publications the Working Group owned stay published.
 
-### 4.5.3 Dissolution of a Working Group
+## Working on publications
 
+- **Proposing a publication.** A new publication, or a new major version, starts with a proposal
+  issue in `govstack-registry`. The Technical Committee approves it (see *Proposals* in
+  `publication_tracks.md`).
+- **Every publication is a repository.** A Working Group writes each of its publications in a
+  GitHub repository, and the GovStack compiler renders it at `specs.govstack.global`. A new
+  specification starts from `bb-template`. What the repository must contain is set in
+  `compiling_publications.md`.
+- **Releasing a version.** When a version is ready, a Representative opens its release pull
+  request. The Editorial Committee approves it and publishes the release (see *Releasing a
+  version* in `compiling_publications.md`).
+- **The publication track.** The stages a publication goes through, from draft to release, and its
+  review, are set in `publication_tracks.md`.
 
-A Working Group can be dissolved upon the following three scenarios:
+## Decision making
 
-- When members of the Working Group decide upon an assembly documented through a meeting minute to dissolve the group, and given that the meeting was announced with at least 2 weeks anticipation through the Working Group’s communication channels.
-- When the Advisory Board decides upon a public assembly and publishes its reasons through a meeting minute.
-- When a Working Group becomes inactive 6 months after the expiration of their last annual charter. In this case, dissolution of a Working Group MUST be documented by the Technical Facilitation Team, which MUST evaluate beforehand if the Working Group can be re-activated through an open call.  
-
-### 4.5.4 Becoming a member and membership finalization
-
-Work in progress
-
-- Who is a participant
-    - [The Code of Conduct](https://www.govstack.global/coc/)
-    - The Contributor Code
-    - Participating as an Individual
-    - Participating on behalf of an organization
-- Process for becoming a lead
-    - Election and resignation process
-- Process for becoming part of the facilitator group
-
-### 4.5.5 Special Membership Groups
-
-Work in progress. Search for existing documents describing these groups or organs.
-
-Technical Committee
-
-Architecture Working Group
-
-Advisory Board
-
-- Strategic Governance Committee
-- Governance Committee
-
-## 4.6 Consensus building in Working Groups
-
-Work in progress
-
-Draft should specify that consensus building should prioritise consensus by deliberation and recommends a voting-based mechanism that can be activated whenever consensus by deliberation was not achieved and a decision has been made
+TODO: Set out how a Working Group reaches decisions. Consensus by deliberation comes first. A
+voting mechanism is recommended for when consensus by deliberation is not reached and a decision
+has to be made.

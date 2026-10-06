@@ -3,15 +3,22 @@ toc:
   introduction:
     - overview.md
     - scope.md
-    - obsoletes.md
     - references.md
-    - terminology.md
+    - terminology.yml
   chapters:
-    - govstack_namespaces.md
     - govstack_publications.md
+    - reference_architectures.md
+    - guides.md
+    - terminologies.md
+    - use_cases.md
     - publication_tracks.md
-    - compiling_specifications.md
     - govstack_working_groups.md
+    - govstack_namespaces.md
+    - compiling_publications.md
+    - govstack_registry.md
   resources:
+    - working_group_handbook.md
+    - charter_template.md
+    - publication_proposal_template.md
     - skills.md
     - scripts.md
