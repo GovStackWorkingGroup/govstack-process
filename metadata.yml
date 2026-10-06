@@ -1,11 +1,13 @@
 ---
-name: GovStack Meta-Specification
-description: Documentation about publishing GovStack specifications.
-url: https://specs.govstack.global/meta-specification
-repository: https://github.com/govStackWorkingGroup/meta-specification
-publication_id: govstack:core:meta-specification
-working_group: govstack:team:technical-committee
+name: GovStack Process
+abstract: How GovStack organizes its publications, the tracks they follow, and the Working Groups that produce them.
+url: https://specs.govstack.global/process
+repository: https://github.com/govStackWorkingGroup/govstack-process
+urn: govstack:process
+owner_group: govstack:team:technical-committee
 versions:
   - version: 1.0-draft
-    url_suffix: /meta-specification/1.0-draft
+    url_suffix: /process/1.0-draft
     latest: true
+    release_date:
+    short_description:

@@ -2,7 +2,11 @@
 title: Overview
 ---
 
-This document aims to cover all aspects of GovStack Publication lifecycle, including the operating procedures for the Working Groups that create specifications. It’s objective is to ensure there are clear processes for the different participants and stakeholders using, building and implementing the GovStack framework.
+The GovStack Process covers the GovStack publication lifecycle, including the operating procedures for the Working Groups that create publications.
+
+The GovStack Process is a process document, in the manner of the W3C Process Document and IETF RFC 2026. It is not a specification: it has no conformance subject, and nothing is assessed against it. Its rules bind GovStack bodies and participants, and the GovStack committees enforce them through governance. It was formerly published as the Meta-Specification (`govstack:meta`, `govstack:spec:process`).
+
+Its objective is to ensure clear processes for the participants and stakeholders who use, build and implement the GovStack framework.
 
 This document is part of the Core series of GovStack Publications. Other documents in the series that will allow readers to work with the GovStack approach are as follows:
 
