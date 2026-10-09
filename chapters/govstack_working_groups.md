@@ -74,9 +74,11 @@ The facilitators are responsible for:
 - **Documentation.** Keeping a record of the Working Group's activities and decisions, and keeping
   its public page up to date.
 
-  TODO: Rework how a Working Group documents its activities and decisions. Decisions about a
-  publication can be recorded as ADRs in the `ADR/` folder of its repository. Decide what is
-  recorded as an ADR, what as a meeting minute, and where minutes are kept.
+  Decisions about a publication are recorded as ADRs or TDRs in the `ADR/` folder of its
+  repository, and the facilitators put open records on the agenda of the group's sessions (see
+  `decision_records.md`).
+
+  TODO: Decide where meeting minutes are kept.
 
 - **The group's spaces.** GovStack gives each Working Group a public page, a calendar, a
   communication channel and GitHub repositories for its publications. The facilitators look after
@@ -181,6 +183,11 @@ group. The publications the Working Group owned stay published.
   review, are set in `publication_tracks.md`.
 
 ## Decision making
+
+A Working Group's discussions are driven by decision records: Architectural Decision Records for
+Reference Architectures and Technical Decision Records for specifications. Anyone can introduce a
+topic by opening one as an issue or a pull request. How records are opened, put on the agenda and
+decided is set in `decision_records.md`.
 
 TODO: Set out how a Working Group reaches decisions. Consensus by deliberation comes first. A
 voting mechanism is recommended for when consensus by deliberation is not reached and a decision
