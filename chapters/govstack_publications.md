@@ -22,5 +22,12 @@ In general, GovStack Specifications are normative artifacts that can be complied
 
 ## Related chapters
 
-- `govstack_namespaces.md` registers the identifiers.
+The chapters that follow this one describe each publication type. The chapters under *Publication
+process* describe how a publication of any type is owned, proposed, identified, compiled and
+recorded:
+
+- `govstack_working_groups.md` describes the Working Groups that own publications.
 - `publication_tracks.md` sets out the lifecycle each publication moves through.
+- `govstack_namespaces.md` sets the rules for identifiers.
+- `compiling_publications.md` sets out what a repository needs for compilation and release.
+- `govstack_registry.md` records the identifiers issued and the versions released.

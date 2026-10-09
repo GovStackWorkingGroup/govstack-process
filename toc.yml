@@ -6,16 +6,18 @@ toc:
     - references.md
     - terminology.yml
   chapters:
-    - govstack_publications.md
-    - reference_architectures.md
-    - guides.md
-    - terminologies.md
-    - use_cases.md
-    - publication_tracks.md
-    - govstack_working_groups.md
-    - govstack_namespaces.md
-    - compiling_publications.md
-    - govstack_registry.md
+    - Publication types:
+        - govstack_publications.md
+        - reference_architectures.md
+        - guides.md
+        - terminologies.md
+        - use_cases.md
+    - Publication process:
+        - govstack_working_groups.md
+        - publication_tracks.md
+        - govstack_namespaces.md
+        - compiling_publications.md
+        - govstack_registry.md
   resources:
     - working_group_handbook.md
     - charter_template.md
