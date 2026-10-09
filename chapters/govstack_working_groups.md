@@ -6,7 +6,7 @@ description: GovStack Working Groups are groups of experts and practitioners in 
 ## What a Working Group is
 
 A Working Group is a community of experts with an interest in governmental interoperability. Its
-members convene around one area of expertise to apply the GovStack model to it. Each Working Group
+members convene around one area of expertise to apply the GovStack model to it. All members of the Working Group must be members of the *GovStack Technical Community*  anyone else attending is a guest. Each Working Group
 has an identifier, `govstack:wg:<id>`, and a record in the GovStack Registry (see
 `govstack_namespaces.md` and `govstack_registry.md`).
 
@@ -38,7 +38,7 @@ throughout this chapter.
 
 A Working Group has the following roles:
 
-- **Members.** Anyone who joins the Working Group, casually or more permanently. Members contribute
+- **Members.** Anyone who joins the Working Group, casually or more permanently who is a member of the *GovStack Technical Community*. Members contribute
   their expertise or feedback, attend the Working Group's events, and take part in its asynchronous
   activities and discussions. Members who contribute to a version of a publication are credited in
   its `authors.yml`, with their roles and their `govstack:person:` identifier (see *Person
@@ -56,6 +56,8 @@ A Working Group has the following roles:
 - **Facilitators.** The team that organizes the Working Group's activities. A group of facilitators
   means the Representatives do not carry all the work of running the group, and gives members who
   want to get more involved a way to do so.
+- **Guests** These are attendees whom particiapte in any working grop activity but are not members of the *GovStack Technical Community*
+
 
 TODO: Complete the facilitators' commitment. The previous text read "A WG Facilitator is expected
 to remain active within the working group for the period" and was cut off.
