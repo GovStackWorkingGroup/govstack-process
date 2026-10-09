@@ -130,6 +130,29 @@ toc:
 - Every listed file must exist.
 - A file that is not listed is not rendered. The compiler reports it as a warning.
 
+### Subsections
+
+The pages under `chapters` can be grouped into subsections. A subsection is an entry with a single
+key, its title, whose value is the list of its pages:
+
+```yaml
+  chapters:
+    - Publication types:
+        - first_type.md
+        - second_type.md
+    - Publication process:
+        - first_step.md
+    - closing_chapter.md
+```
+
+- Subsections are allowed under `chapters` only. `introduction`, `requirements` and `resources`
+  list pages only.
+- Subsections are one level deep. A subsection lists pages, not further subsections.
+- A subsection has a title and at least one page. Titles are unique within `chapters`.
+- Subsections and pages can be mixed, and are rendered in the order they are listed.
+- A subsection groups pages in the table of contents only. It does not change where the files are
+  kept: each page is still a path relative to `chapters/`.
+
 ## Compilation profiles
 
 The compiler reads the `urn` in `metadata.yml` and applies the profile of its namespace. The
@@ -159,7 +182,8 @@ Every publication, whatever its profile:
 5. Is not obsolete in the registry. This check applies on release only.
 6. Has an `authors.yml` in which every person has a name, a role and a `govstack:person:`
    identifier.
-7. Has a `toc.yml` in which every listed file exists.
+7. Has a `toc.yml` in which every listed file exists, and whose subsections, if any, follow the
+   rules in *Subsections* above.
 
 ### Requirement identifier checks
 
