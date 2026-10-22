@@ -1,0 +1,9 @@
+---
+# Should only include this version's authors 
+authors:
+  - name: Ali González-García
+    roles: [Author, Editor]
+    urn: govstack:person:ali-gonzalez-garcia
+  - name: David Higgins
+    urn: govstack:person:david-higgins
+    roles: [Author]
