@@ -10,7 +10,7 @@ things:
    type.
 2. **It renders the book.** The compiler produces a static website of the publication, served at
    the publication's URL.
-3. **It writes to the GovStack Registry.** When a version is released, the compiler records that
+3. **It writes to GovStack Records.** When a version is released, the compiler records that
    the version exists and where it is published, and records the people credited in it.
 
 This chapter tells a Working Group what its repository must contain for compilation to succeed.
@@ -102,7 +102,7 @@ authors:
 | `name` | yes | The person's name as it is shown in the publication. |
 | `roles` | yes | One or more of `Author`, `Editor`, `Contributor`. |
 | `urn` | yes | The person's identifier, `govstack:person:<id>`. Use the same identifier in every publication the person is credited in (see *Person identifiers* in `govstack_namespaces.md`). |
-| `url` | no | The person's page on a GovStack website. The pages are built later from the person records in the registry. |
+| `url` | no | The person's page on a GovStack website. The pages are built later from the person records in GovStack Records. |
 
 ## toc.yml
 
@@ -176,10 +176,10 @@ Every publication, whatever its profile:
 
 1. Has the repository layout above.
 2. Has a `metadata.yml` with every required field, and exactly one version marked `latest`.
-3. Has a `urn` that has an approved proposal record in the registry (see `publication_tracks.md`),
+3. Has a `urn` that has an approved proposal record in GovStack Records (see `publication_tracks.md`),
    and is not in a retired namespace.
-4. Has an `owner_group` that is a Working Group or a team in the registry.
-5. Is not obsolete in the registry. This check applies on release only.
+4. Has an `owner_group` that is a Working Group or a team in GovStack Records.
+5. Is not obsolete in GovStack Records. This check applies on release only.
 6. Has an `authors.yml` in which every person has a name, a role and a `govstack:person:`
    identifier.
 7. Has a `toc.yml` in which every listed file exists, and whose subsections, if any, follow the
@@ -208,8 +208,8 @@ book, at `<version url>/requirements.json`:
 }
 ```
 
-To find the baseline, the compiler looks up the version marked `latest` in the GovStack Registry
-and fetches the index from its URL. Release records in the registry are never changed, and a
+To find the baseline, the compiler looks up the version marked `latest` in GovStack Records
+and fetches the index from its URL. Release records in GovStack Records are never changed, and a
 published version does not change. The baseline therefore cannot be altered by editing the
 repository or its history.
 
@@ -238,11 +238,11 @@ renumber or remove a requirement it introduced in a release candidate.
 | Event | The compiler |
 |---|---|
 | A pull request is opened or updated | Checks the publication and reports the result on the pull request. It renders nothing and writes nothing. |
-| A version is released | Checks the publication, renders the book and writes to the GovStack Registry. |
+| A version is released | Checks the publication, renders the book and writes to GovStack Records. |
 
 **Drafts and release candidates are checked, not published.** A version whose number carries a
 pre-release suffix, such as `1.0-draft` or `2.0.0-rc`, is checked like any other. It is not
-rendered and not written to the registry.
+rendered and not written to GovStack Records.
 
 **One compiler for every publication.** The compiler runs as a GitHub Action. Its code is kept in
 one place, the `publications-compiler` repository, so that a change to a rule applies to every
@@ -293,10 +293,10 @@ Editorial Committee approves at two points:
    - the version number has no pre-release suffix.
 
    It then checks the publication, renders the book, and opens a pull request to
-   `govstack-registry` with the release record. If any step fails, nothing is published and the
+   `govstack-records` with the release record. If any step fails, nothing is published and the
    Editorial Committee is told why.
 5. **The Editorial Committee merges the release record.** The version is registered once the
-   record is merged (see *Records* in `govstack_registry.md`).
+   record is merged (see *Records* in `govstack_records.md`).
 
 In the publication track, step 1 follows the Working Group's verdict on the release candidate, and
 step 3 is the move to *Published* (see `publication_tracks.md`).
@@ -320,16 +320,16 @@ When every check passes, the compiler:
 1. **Renders the book.** It produces a static website of the version, served at `url` +
    `url_suffix`. The version marked `latest` is also served at `url`. For a specification, the
    book includes the requirement index.
-2. **Opens the registry pull request.** It opens one pull request to `govstack-registry` that:
+2. **Opens the records pull request.** It opens one pull request to `govstack-records` that:
    - adds the release record, which says that version *Y* of publication *X* is published at URL
-     *Z*. Nothing else about the publication is written to the registry: its content and metadata
+     *Z*. Nothing else about the publication is written to GovStack Records: its content and metadata
      stay in its repository;
    - updates the person records: for every person in `authors.yml`, that the person is credited in
      this version, and in which roles.
 
    The Editorial Committee merges the pull request.
 
-When a check fails, the compiler renders nothing and writes nothing to the registry. It reports
+When a check fails, the compiler renders nothing and writes nothing to GovStack Records. It reports
 every failed check.
 
 ## To be decided

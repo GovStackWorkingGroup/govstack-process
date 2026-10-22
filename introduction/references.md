@@ -11,7 +11,7 @@ title: References
 - GovStack Reference Use Cases. <https://govstack.gitbook.io/use-cases>
 - GovStack Service Patterns. <https://specs.govstack.global/service-patterns>
 - GovStack Code of Conduct. <https://www.govstack.global/coc/>
-- GovStack Registry, repository `govstack-registry`.
+- GovStack Records, repository `govstack-records`.
 - GovStack publications compiler, repository `publications-compiler`.
 
 ## Process and governance

@@ -13,7 +13,7 @@ chapter applies.
 GovStack provides every Working Group with:
 
 - a public page on the GovStack website;
-- a calendar, linked from the Working Group's record in the GovStack Registry;
+- a calendar, linked from the Working Group's record in GovStack Records;
 - a [Slack](http://govstack.slack.com) channel, for immediate communication;
 - a member mailing list;
 - a [Confluence](https://govstack-global.atlassian.net/wiki/) space, for working documents;
@@ -61,5 +61,5 @@ budget, the Working Group provides:
 
 A Working Group writes its charter from the template in `charter_template.md`. The contents a
 charter must have are set in the chapter *Working Groups*, section *The charter*. A charter is
-submitted as a file in the `charters/` folder of `govstack-registry`, as described in the
+submitted as a file in the `charters/` folder of `govstack-records`, as described in the
 *Creation* steps of that chapter.
