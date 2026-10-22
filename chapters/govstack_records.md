@@ -1,15 +1,15 @@
 ---
-title: GovStack Registry
+title: GovStack Records
 status: draft
 ---
 
-The GovStack Registry records the identifiers GovStack has issued and the publication versions it
-has released. GovStack Namespaces (`govstack_namespaces.md`) set the rules for identifiers. The
-registry holds the identifiers that exist. The content of a publication stays in the
-publication's own repository and is never copied into the registry.
+GovStack Records lists the identifiers GovStack has issued and the publication versions it
+has released. GovStack Namespaces (`govstack_namespaces.md`) set the rules for identifiers.
+GovStack Records holds the identifiers that exist. The content of a publication stays in the
+publication's own repository and is never copied into GovStack Records.
 
-The registry is kept in the `govstack-registry` repository as YAML files, and is served by the
-GovStack Registry server so that people and tools can consult it.
+GovStack Records is kept in the `govstack-records` repository as YAML files, and is served by the
+GovStack Records server so that people and tools can consult it.
 
 ## Entities and records
 
@@ -60,7 +60,7 @@ changed afterwards. The git history of `records/` is the history of every GovSta
 | Release | `records/releases/` | The compiler, when a version is released | Editorial Committee |
 | Obsoletion | `records/obsoletions/` | Technical Committee | Technical Committee |
 
-The `.github/CODEOWNERS` file of `govstack-registry` names the team that must approve each folder.
+The `.github/CODEOWNERS` file of `govstack-records` names the team that must approve each folder.
 
 A file is named `<YYYY-MM-DD>-<name>.yml`, where `<name>` is the publication's identifier without
 `govstack:` and with hyphens for colons. A release record also carries the version:
@@ -71,7 +71,7 @@ publication. An approved proposal assigns the publication's identifier.
 
 ```yaml
 ---
-issue: https://github.com/GovStackWorkingGroup/govstack-registry/issues/12
+issue: https://github.com/GovStackWorkingGroup/govstack-records/issues/12
 urn: govstack:spec:bb:wallet
 owner_group: govstack:wg:cfid
 decision: approved # or declined
@@ -147,12 +147,12 @@ govstack:
 | `url` | The person's page on a GovStack website, from the most recent `authors.yml` that gives one. May be empty. |
 | `credits` | One entry per publication version the person is credited in, with the roles from `authors.yml`. |
 
-The registry holds no other personal data.
+GovStack Records holds no other personal data.
 
 #### Corrections and removal
 
 A person can ask the Technical Committee to correct or remove their record. The Technical Committee
-makes the change by pull request to `govstack-registry`.
+makes the change by pull request to `govstack-records`.
 
 - **A correction** changes the record, for example a misspelled name or a wrong `url`.
 - **A removal** deletes the person's name, `url` and credits, and keeps only the `id` with
@@ -163,10 +163,10 @@ Neither changes a released publication. The person's name stays in the publicati
 released, because a released version does not change. A future version can leave the person out of
 its `authors.yml`.
 
-## How the registry is written
+## How GovStack Records is written
 
 - **Working Groups and teams.** The Technical Committee opens a pull request to
-  `govstack-registry`. A Working Group record is created when the Working Group is created, and its
+  `govstack-records`. A Working Group record is created when the Working Group is created, and its
   `status` changes when it is dissolved (see `govstack_working_groups.md`).
 - **Proposals.** Anyone opens an issue from the *Publication Proposal* template. The Technical
   Committee records its decision in `records/proposals/` (see `publication_tracks.md`).
@@ -177,9 +177,9 @@ its `authors.yml`.
 - **Obsoletions.** The Technical Committee adds the obsoletion record (see `publication_tracks.md`).
 - **Publications.** `publications.yml` is regenerated from the records.
 
-## How the registry is consulted
+## How GovStack Records is consulted
 
-The YAML files in `govstack-registry` can be read directly. The GovStack Registry server also
+The YAML files in `govstack-records` can be read directly. The GovStack Records server also
 serves them.
 
 | Request | Response |
@@ -192,18 +192,18 @@ The server is required. The resolver is planned.
 
 ## Requirement identifiers
 
-The registry does not record requirements. Each specification keeps its requirement identifiers in
+GovStack Records does not record requirements. Each specification keeps its requirement identifiers in
 its own text, and the compiler keeps them stable by comparing each new version with the last
 released version as published (see *Requirement identifier checks* in `compiling_publications.md`).
-The registry's part is the release record: it tells the compiler where the last released version
+The part GovStack Records plays is the release record: it tells the compiler where the last released version
 is published, and because a record is never changed, the baseline cannot be moved.
 
-Recording every requirement identifier in the registry would also prevent reuse. But the registry
-would then hold publication content, and every release would depend on a central allocation step.
+Recording every requirement identifier in GovStack Records would also prevent reuse. But it would
+then hold publication content, and every release would depend on a central allocation step.
 
 ## Open
 
 - [ ] `publications.yml` does not exist yet, nor the tool that generates it from the records.
-- [ ] Where the registry server is hosted, and who operates it.
-- [ ] How proposal and release records are backfilled for publications that existed before the
-  registry. Until they are, those publications fail the compiler's identifier check.
+- [ ] Where the GovStack Records server is hosted, and who operates it.
+- [ ] How proposal and release records are backfilled for publications that existed before
+  GovStack Records. Until they are, those publications fail the compiler's identifier check.

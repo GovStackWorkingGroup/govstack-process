@@ -30,4 +30,4 @@ recorded:
 - `publication_tracks.md` sets out the lifecycle each publication moves through.
 - `govstack_namespaces.md` sets the rules for identifiers.
 - `compiling_publications.md` sets out what a repository needs for compilation and release.
-- `govstack_registry.md` records the identifiers issued and the versions released.
+- `govstack_records.md` records the identifiers issued and the versions released.

@@ -7,7 +7,7 @@ Every GovStack publication moves through the same stages: it is proposed, drafte
 released and, when it is no longer needed, made obsolete. This chapter sets out each stage, who
 approves it, and how a publication is reviewed. The Working Group that owns a publication does the
 work (see `govstack_working_groups.md`). The decisions of the Technical Committee and the Editorial
-Committee are recorded in the GovStack Registry (see *Records* in `govstack_registry.md`).
+Committee are recorded in GovStack Records (see *Records* in `govstack_records.md`).
 
 ## Overview
 
@@ -23,7 +23,7 @@ flowchart TD
     kind -->|Patch version| r1
 
     subgraph proposal ["Proposal"]
-        p1["WG opens a proposal issue<br/>in govstack-registry"] --> p2["Architecture WG reviews it<br/>(specifications and reference architectures)"]
+        p1["WG opens a proposal issue<br/>in govstack-records"] --> p2["Architecture WG reviews it<br/>(specifications and reference architectures)"]
         p2 --> p3{"Technical Committee<br/>decides"}
         p3 -->|Declined| p4["TC adds a proposal record<br/>and closes the issue"]
         p3 -->|Approved| p5["TC adds a proposal record<br/>and assigns the identifier"]
@@ -48,7 +48,7 @@ flowchart TD
         r1["WG opens the release pull request<br/>version marked latest: true"] --> r2{"Editorial Committee approves<br/>as owner of metadata.yml"}
         r2 -->|Changes requested| r1
         r2 -->|Approved and merged| r3["EC publishes a GitHub Release<br/>with tag vX.Y.Z"]
-        r3 --> r4["Compiler checks, renders the book<br/>and opens a registry pull request"]
+        r3 --> r4["Compiler checks, renders the book<br/>and opens a records pull request"]
         r4 --> r5["EC merges the release record"]
         r5 --> r6(["Version released"])
     end
@@ -65,11 +65,11 @@ flowchart TD
 
 | Stage | In the repository | Starts when | Ends when | Approved by |
 |---|---|---|---|---|
-| Proposal | An issue in `govstack-registry`, opened from the *Publication Proposal* template | The issue is opened | The Technical Committee decides, and records the decision | Technical Committee |
+| Proposal | An issue in `govstack-records`, opened from the *Publication Proposal* template | The issue is opened | The Technical Committee decides, and records the decision | Technical Committee |
 | Draft | A version with the suffix `-draft` in `metadata.yml`, for example `2.0.0-draft` | The proposal is approved, or work on a minor or patch version starts | The Working Group decides the draft is ready for review | Working Group |
 | Release candidate | A version with the suffix `-rc`, for example `2.0.0-rc` | The Working Group decides the draft is ready for review | The review is complete and the Working Group gives its verdict | Working Group |
 | Released | A version with no suffix, marked `latest: true` | The Working Group opens the release pull request | The Editorial Committee publishes the release and merges its record | Editorial Committee |
-| Obsolete | An obsoletion record in `govstack-registry` | The Working Group or the Technical Committee proposes it | The Technical Committee decides, and records the decision | Technical Committee |
+| Obsolete | An obsoletion record in `govstack-records` | The Working Group or the Technical Committee proposes it | The Technical Committee decides, and records the decision | Technical Committee |
 
 Drafts and release candidates are checked by the compiler but not published, and their requirements
 do not set a baseline (see `compiling_publications.md`).
@@ -87,16 +87,16 @@ Not every version goes through every stage:
 
 A proposal asks for a new publication.
 
-1. The Working Group opens an issue in `govstack-registry` with the *Publication Proposal* issue
+1. The Working Group opens an issue in `govstack-records` with the *Publication Proposal* issue
    template. The same content is in `resources/publication_proposal_template.md`.
 2. For a new specification or a reference architecture, the Architecture Working Group reviews the proposal: that it reflects the state of the art, follows the GovStack Architecture, and does not overlap with other Building Blocks.
 3. The Technical Committee approves or declines the proposal. For a new publication, it assigns the
    publication's identifier (see *Requesting an identifier* in `govstack_namespaces.md`).
-4. The Technical Committee records its decision as a proposal record in `govstack-registry`, and
+4. The Technical Committee records its decision as a proposal record in `govstack-records`, and
    closes the issue.
 
 The issue's labels show the proposal's status, matching the `status` of the proposal template.
-The labels are defined in `.github/labels.yml` of `govstack-registry`.
+The labels are defined in `.github/labels.yml` of `govstack-records`.
 
 | Label | Status | Set by |
 |---|---|---|
@@ -113,8 +113,8 @@ The Working Group adds an approved publication to its charter.
 | Body | Role in the track |
 |---|---|
 | Working Group | Owns the publication. Proposes, drafts, runs the review, gives the verdict and opens the release pull request. |
-| Technical Committee | Approves proposals for new publications, and assigns identifiers. Has a review window on every release candidate. Approves obsoleting. Records its decisions in the registry. |
-| Editorial Committee | Approves release pull requests, publishes releases, and merges release records into the registry. |
+| Technical Committee | Approves proposals for new publications, and assigns identifiers. Has a review window on every release candidate. Approves obsoleting. Records its decisions in GovStack Records. |
+| Editorial Committee | Approves release pull requests, publishes releases, and merges release records into GovStack Records. |
 | Architecture Working Group | Reviews proposals and drafts of specifications against the GovStack Architecture and the other Building Blocks. |
 
 ## Review
@@ -159,7 +159,7 @@ The Working Group runs the review:
 
 A Working Group member opens the release pull request, and the Editorial Committee approves it and
 publishes the release. The compiler then renders the book and opens a pull request to
-`govstack-registry` with the release record, which the Editorial Committee merges. The steps are
+`govstack-records` with the release record, which the Editorial Committee merges. The steps are
 in *Releasing a version* in `compiling_publications.md`.
 
 ## Obsoleting
@@ -170,7 +170,7 @@ A publication becomes obsolete when it is no longer maintained or has been repla
    in the `ADR/` folder of the publication's repository. The ADR gives the reasons and names the
    publication that replaces it, if any.
 2. The Technical Committee approves or declines the ADR.
-3. If it approves, the Technical Committee adds an obsoletion record to `govstack-registry`.
+3. If it approves, the Technical Committee adds an obsoletion record to `govstack-records`.
 
-An obsolete publication stays published at its URLs, and the registry shows it as obsolete. The
+An obsolete publication stays published at its URLs, and GovStack Records shows it as obsolete. The
 compiler does not release new versions of it. Its identifier is never reassigned.

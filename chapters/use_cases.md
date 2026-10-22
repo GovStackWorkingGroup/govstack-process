@@ -2,6 +2,8 @@
 title: Use cases
 note: This content is obsolete. Its future is put to the Technical Committee in PROC-ADR-2.
 status: draft
+references:
+  - https://govstack-global.atlassian.net/wiki/spaces/GH/pages/2214920207/5.+Case+Studies
 ---
 
 Within the core GovStack Initiative, "reference use cases" are used to provide context and limit scope of the various GovStack Building Blocks. These use cases are considered to be part of GovStack and are versioned and released alongside the Building Block Specifications when a given GovStack release occurs.
