@@ -92,6 +92,8 @@ publication track of the GovStack Process.
 
 ## Retired namespaces
 
+Retired namespaces will be documented under the table below.
+
 | Namespace | Retired | Replaced by |
 |---|---|---|
 | `govstack:core:` | 2026-09-21 | `govstack:spec` for the Specification Framework, `govstack:process` for the GovStack Process, `govstack:terminology` for Crafting GovStack Terminologies. No publication remains in this class |

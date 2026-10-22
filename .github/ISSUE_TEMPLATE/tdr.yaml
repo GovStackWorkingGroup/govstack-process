@@ -1,0 +1,72 @@
+name: Technical Decision Record
+description: Introduce a topic for the Working Group to discuss and decide, as a TDR
+title: "[TDR] <the question, as a short statement>"
+labels: ["tdr"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to introduce a topic about a specification (`govstack:spec:`). The facilitators put open
+        TDRs on the agenda of the Working Group's sessions, where the group discusses and
+        decides them. If you have already worked out the options, you can instead open a pull
+        request that adds the record to the `ADR/` folder. The complete process is in the
+        GovStack Process, chapter *Decision Records*.
+  - type: checkboxes
+    id: opening
+    attributes:
+      label: Before you submit
+      options:
+        - label: I have checked the [open TDRs](../issues?q=label%3Atdr) and the records in `ADR/`, and this question is not already open or decided
+          required: true
+        - label: I agree to follow the [GovStack Code of Conduct](https://govstack.global/coc)
+          required: true
+  - type: input
+    id: question
+    attributes:
+      label: Question
+      description: The question to decide, in one sentence.
+      placeholder: Should credential presentation use OpenID4VP?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context and problem statement
+      description: The situation that raises the question, and why it needs a decision now.
+    validations:
+      required: true
+  - type: textarea
+    id: affected
+    attributes:
+      label: Affected parts of the publication
+      description: The requirements, APIs or data models the question is about. One per line, as a link or an identifier.
+      placeholder: govstack:spec:bb:wallet#req-12
+    validations:
+      required: true
+  - type: textarea
+    id: drivers
+    attributes:
+      label: Decision drivers (recommended)
+      description: The concerns that weigh on the decision. One per line.
+  - type: textarea
+    id: options
+    attributes:
+      label: Considered options
+      description: Every option you know of, including leaving things as they are, with its pros and cons. The Working Group can add more.
+    validations:
+      required: true
+  - type: textarea
+    id: recommendation
+    attributes:
+      label: Recommendation (optional)
+      description: The option you recommend, and why.
+  - type: textarea
+    id: people
+    attributes:
+      label: Decision makers, consulted and informed (optional)
+      description: The Working Groups, teams or people who decide, who should be consulted, and who should be informed. For example govstack:wg:cfid, Architecture Working Group.
+  - type: textarea
+    id: related
+    attributes:
+      label: Related records and links (optional)
+      description: Other ADRs or TDRs, issues, standards or discussions this question relates to.
