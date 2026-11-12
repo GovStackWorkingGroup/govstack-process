@@ -38,6 +38,8 @@ A specification has requirements rather than chapters. Its body is in `requireme
 functionality, and it has no `chapters/` folder. The layout of a specification is set in the
 Specification Framework, chapter *Structure of Specifications*.
 
+Files are named using `snake_case`, except for requirement files, which are named using `kebab-case`.
+
 ## metadata.yml
 
 `metadata.yml` identifies the publication and lists its versions.
