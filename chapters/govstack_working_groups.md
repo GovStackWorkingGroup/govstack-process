@@ -5,10 +5,7 @@ description: GovStack Working Groups are groups of experts and practitioners in 
 
 ## What a Working Group is
 
-A Working Group is a community of experts with an interest in governmental interoperability. Its
-members convene around one area of expertise to apply the GovStack model to it. All members of the Working Group must be members of the *GovStack Technical Community*  anyone else attending is a guest. Each Working Group
-has an identifier, `govstack:wg:<id>`, and a record in the GovStack Registry (see
-`govstack_namespaces.md` and `govstack_registry.md`).
+A Working Group is a community of experts with an interest in governmental interoperability. Its members convene around one area of expertise to apply the GovStack model to it. All members of the Working Group must be members of the *GovStack Technical Community*  anyone else attending is a guest. Each Working Group has an identifier, `govstack:wg:<id>`, and a record in GovStack Records (see `govstack_namespaces.md` and `govstack_records.md`).
 
 A Working Group provides an **ongoing space** for its stakeholders to:
 
@@ -68,10 +65,10 @@ The facilitators are responsible for:
   documenting and communicating any change (see *The charter*).
 - **The calendar.** Recording every activity of the Working Group in its calendar, so that members
   can subscribe to it and GovStack can announce the group's activities. The link to the calendar is
-  the `calendar` field of the Working Group's record in the registry.
+  the `calendar` field of the Working Group's record in GovStack Records.
 
   TODO: Outline how a Working Group requests a calendar, who creates it, how its link is added to
-  the Working Group's registry record, and how the facilitators maintain it.
+  the Working Group's record in GovStack Records, and how the facilitators maintain it.
 
 - **Documentation.** Keeping a record of the Working Group's activities and decisions, and keeping
   its public page up to date.
@@ -95,7 +92,7 @@ member becomes a Representative or a facilitator, including election and resigna
 
 A charter is the document that sets out a Working Group's goals and scope for the year. It is
 written from the charter template in the *Working Group Handbook*, and kept in the `charters/`
-folder of `govstack-registry` as `<wg-id>-<year>.md`. A Working Group Charter MUST contain:
+folder of `govstack-records` as `<wg-id>-<year>.md`. A Working Group Charter MUST contain:
 
 - the group's mission;
 - the scope of the group's work;
@@ -129,21 +126,21 @@ A Working Group is created when its charter is approved:
 
 1. The future facilitators write the charter, openly, so that participants can contribute to it.
 2. The Working Group Leads submit the charter to the Technical Committee as a pull request that
-   adds it to the `charters/` folder of `govstack-registry`.
+   adds it to the `charters/` folder of `govstack-records`.
 3. The Technical Committee announces the request for comments on GovStack's public communication
    channels. The GovStack community comments on the pull request for at least two weeks.
 4. The Technical Committee and the facilitators resolve every comment within two weeks of the end
    of the comment period. The Technical Committee then publishes its decision to create the Working
    Group or not, and merges the pull request if it does.
 5. If the Working Group is created, the Technical Committee assigns its identifier,
-   `govstack:wg:<id>`, and adds its record to `working_groups.yml` in `govstack-registry` by pull
+   `govstack:wg:<id>`, and adds its record to `working_groups.yml` in `govstack-records` by pull
    request, with the fields `id`, `name`, `url`, `calendar`, `charter` and `status: active`.
    `charter` is the path of the approved charter.
 
 A charter's status follows these steps. It is `DRAFT` while it is written (step 1), `UNDER REVIEW`
 from its submission until the decision (steps 2 to 4), and `APPROVED` once the Technical Committee
 merges it. The status of a charter is not the status of the Working Group: a Working Group is
-`active` or `inactive` in the registry.
+`active` or `inactive` in GovStack Records.
 
 ### Annual renewal
 
@@ -151,7 +148,7 @@ The charter is renewed every year, so that the Working Group can set its goals f
 plan its members' time. A renewed charter is a new file in `charters/`, and follows steps 1 to 4 of
 *Creation*. Once it is approved, the Technical Committee updates the `charter` field of the Working
 Group's record to the new file. Past charters stay in `charters/`. The Working Group keeps its
-identifier and its registry record.
+identifier and its record in GovStack Records.
 
 ### Dissolution
 
@@ -165,14 +162,14 @@ The Technical Committee dissolves a Working Group in any of these cases:
   dissolving it, the Technical Committee MUST consider whether an open call can reactivate it, and
   MUST document the dissolution.
 
-When a Working Group is dissolved, the Technical Committee changes the `status` of its registry
-record to `inactive`. The record is never deleted, and the identifier is never given to another
+When a Working Group is dissolved, the Technical Committee changes the `status` of its record in
+GovStack Records to `inactive`. The record is never deleted, and the identifier is never given to another
 group. The publications the Working Group owned stay published.
 
 ## Working on publications
 
 - **Proposing a publication.** A new publication, or a new major version, starts with a proposal
-  issue in `govstack-registry`. The Technical Committee approves it (see *Proposals* in
+  issue in `govstack-records`. The Technical Committee approves it (see *Proposals* in
   `publication_tracks.md`).
 - **Every publication is a repository.** A Working Group writes each of its publications in a
   GitHub repository, and the GovStack compiler renders it at `specs.govstack.global`. A new

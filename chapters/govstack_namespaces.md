@@ -4,7 +4,7 @@ title: GovStack Namespaces
 
 GovStack Namespaces give every object that GovStack refers to a stable identifier: publications,
 Working Groups, teams and persons. This chapter sets the rules for forming identifiers. The
-identifiers that have been issued are recorded in the GovStack Registry (`govstack_registry.md`).
+identifiers that have been issued are recorded in GovStack Records (`govstack_records.md`).
 The kinds of publication are described in `govstack_publications.md`.
 
 ## Anatomy of an identifier
@@ -44,9 +44,9 @@ type (see `compiling_publications.md`).
 
 | Object type | Scope | Namespace | Maintained by |
 |---|---|---|---|
-| Working Groups | GovStack Working Groups | `govstack:wg:` | Technical Committee, by pull request to the registry |
-| Teams | GovStack teams and committees | `govstack:team:` | Technical Committee, by pull request to the registry |
-| Persons | People credited in a GovStack publication | `govstack:person:` | The compiler, from each publication's `authors.yml` (see `govstack_registry.md`) |
+| Working Groups | GovStack Working Groups | `govstack:wg:` | Technical Committee, by pull request to GovStack Records |
+| Teams | GovStack teams and committees | `govstack:team:` | Technical Committee, by pull request to GovStack Records |
+| Persons | People credited in a GovStack publication | `govstack:person:` | The compiler, from each publication's `authors.yml` (see `govstack_records.md`) |
 
 ## Rules
 
@@ -72,19 +72,19 @@ person.
 
 - **Form.** The person's name in lowercase, with hyphens between words and without accents:
   María José García becomes `govstack:person:maria-jose-garcia`.
-- **Check the registry first.** If the person already has an identifier, use it. A person has one
+- **Check GovStack Records first.** If the person already has an identifier, use it. A person has one
   identifier in every publication they are credited in.
 - **A name that is taken gets a suffix.** If another person already has the identifier, add `-2`,
   `-3` and so on: `govstack:person:maria-garcia-2`.
 - **An identifier does not change.** It stays the same if the person's name changes. The name in
-  the registry follows the most recent `authors.yml`.
+  GovStack Records follows the most recent `authors.yml`.
 
 ## Requesting an identifier
 
 A publication's identifier is assigned when its proposal is approved. The Working Group or team
 that proposes a new publication suggests an identifier in its *Publication Proposal* issue (see
-`publication_tracks.md`). The Technical Committee checks it against these rules and against the
-registry, and records the identifier in its proposal decision. The owning group then writes it in
+`publication_tracks.md`). The Technical Committee checks it against these rules and against
+GovStack Records, and records the identifier in its proposal decision. The owning group then writes it in
 the `urn` field of the publication's `metadata.yml`, and its own identifier in `owner_group`.
 
 A new class or node, such as a new publication type, is a change to this chapter. It follows the
@@ -110,4 +110,4 @@ to their replacement.
 
 The canonical identifier syntax, and whether a version belongs inside an identifier, are before
 the Architecture Committee as ARCH-ADR-3 and ARCH-ADR-4. This chapter uses the colon syntax
-proposed there. How requirement identifiers are kept stable is proposed in `govstack_registry.md`.
+proposed there. How requirement identifiers are kept stable is proposed in `govstack_records.md`.

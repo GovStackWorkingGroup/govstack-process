@@ -3,7 +3,7 @@ title: New Publication Proposal Template
 status: [DRAFT, UNDER REVIEW, APPROVED, DECLINED] # (For use by the Technical Committee Team only)
 publication_type:  [Reference Architecture, Building Block, Cross-Funcrtional-Requirements, Guide, Terminology]
 ---
-Use this template to propose a new GovStack publication. Submit it as an issue in `govstack-registry`, with the *Publication Proposal* issue template, which asks for the same fields. The complete process is in the chapter *Publication Tracks*, section *Proposals*.
+Use this template to propose a new GovStack publication. Submit it as an issue in `govstack-records`, with the *Publication Proposal* issue template, which asks for the same fields. The complete process is in the chapter *Publication Tracks*, section *Proposals*.
 
 
 ## New Publication Proposal Template
