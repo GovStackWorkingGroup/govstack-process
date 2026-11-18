@@ -55,12 +55,10 @@ urn: govstack:spec:bb:wallet
 owner_group: govstack:wg:cfid
 versions:
   - version: 1.2.0
-    url_suffix: /bb-wallet/1.2.0
     release_date: 2026-06
     short_description: Adds credential presentation.
     latest: true
   - version: 1.1.0
-    url_suffix: /bb-wallet/1.1.0
     release_date: 2025-11-20
     short_description:
 ```
@@ -69,7 +67,7 @@ versions:
 |---|---|---|
 | `name` | yes | The short name of the publication, such as `Wallet`. The compiler adds the publication type. |
 | `abstract` | yes | One paragraph that says what the publication is. |
-| `url` | yes | Where the publication is served. |
+| `url` | yes | Where the publication is served. The compiler derives the URL of each version from it (see *Version URLs*). |
 | `repository` | yes | The repository the publication is compiled from. |
 | `urn` | yes | The publication's identifier (see `govstack_namespaces.md`). It names the publication, not a version. |
 | `owner_group` | yes | The group that owns the publication: a Working Group, `govstack:wg:<id>`, or a team, `govstack:team:<id>`. |
@@ -80,10 +78,15 @@ Each entry in `versions` has these fields:
 | Field | Required | Content |
 |---|---|---|
 | `version` | yes | The version number. |
-| `url_suffix` | yes, once released | The path of the version, appended to the site root. |
 | `release_date` | yes, may be empty | `YYYY-MM` or `YYYY-MM-DD`. |
 | `short_description` | yes, may be empty | One sentence that says what the version changes. |
 | `latest` | exactly one entry | `true` on the version served at `url`. Omitted on every other entry. |
+
+### Version URLs
+
+A version has no URL field. The compiler derives the URL of each released version from `url` and `version`: `url`, without a trailing `/`, followed by `/` and the version number. For example, `url: https://specs.govstack.global/bb-wallet/` and `version: 1.2.0` give `https://specs.govstack.global/bb-wallet/1.2.0`. This is the version URL. A pre-release is not rendered and has no version URL.
+
+Because the rule is fixed, a Working Group cannot give a version a URL that does not match its publication, and every GovStack publication lays out its versions the same way.
 
 ## authors.yml
 
@@ -319,8 +322,8 @@ it starts with both. Every file the compiler requires is present in `bb-template
 
 When every check passes, the compiler:
 
-1. **Renders the book.** It produces a static website of the version, served at `url` +
-   `url_suffix`. The version marked `latest` is also served at `url`. For a specification, the
+1. **Renders the book.** It produces a static website of the version, served at the version
+   URL. The version marked `latest` is also served at `url`. For a specification, the
    book includes the requirement index.
 2. **Opens the records pull request.** It opens one pull request to `govstack-records` that:
    - adds the release record, which says that version *Y* of publication *X* is published at URL
